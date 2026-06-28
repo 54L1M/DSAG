@@ -139,3 +139,13 @@ Work top to bottom — each builds on the last. Track yourself in
 10. graphs → 11. LRU (ties together a hash map + a linked list).
 
 New to Big-O? Read [`docs/01-big-o.md`](docs/01-big-o.md) first.
+
+## Contributing
+
+Want to add a topic? See [`CONTRIBUTING.md`](CONTRIBUTING.md) — each topic is
+five matched files (stub, solution, test, concise doc, deep doc) and a couple of
+registrations.
+
+## License
+
+[MIT](LICENSE) © 2026 54L1M
