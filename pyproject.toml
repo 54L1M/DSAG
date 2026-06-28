@@ -1,0 +1,46 @@
+[project]
+name = "dsag"
+version = "0.1.0"
+description = "DSAG (DSA Gym) — personalized Python data-structures & algorithms practice (study -> implement -> test -> drill)."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-timeout>=2.3",
+    "ruff>=0.6",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+# Any single test that runs longer than 5s is almost certainly an infinite loop.
+timeout = 5
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+# Exercise files live here; keep them lint-clean so feedback applies to your own code too.
+src = ["src", "stubs", "solutions", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = [
+    "B018",  # allow bare expressions in stubs/examples
+    "UP046", # keep the familiar `Generic[T]` style over PEP 695 `class Foo[T]`
+    "UP047", # ditto for generic functions
+]
+
+[tool.pyright]
+# The repo root is added to sys.path at runtime (see conftest.py), so editors
+# should look here too to resolve `from common.types import ...` etc.
+extraPaths = ["."]
+reportMissingImports = "none"
+
+[tool.ruff.lint.per-file-ignores]
+# Stubs intentionally have unused args / no return until you implement them.
+"stubs/*" = ["F", "B", "SIM", "UP", "ARG"]
+"src/topics/*" = ["F", "B", "SIM", "UP", "ARG"]
+"src/days/*" = ["F", "B", "SIM", "UP", "ARG"]
